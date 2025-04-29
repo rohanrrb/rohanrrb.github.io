@@ -34,7 +34,7 @@ def blog_post_list() -> rx.Component:
     """Displays the list of all blog posts."""
     return rx.el.div(
         rx.el.h2(
-            "Recent Posts",
+            "Research Projects/Notes",
             class_name="text-3xl font-bold mb-6 text-gray-100 font-mono",
         ),
         rx.el.div(
