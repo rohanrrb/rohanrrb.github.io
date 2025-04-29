@@ -28,7 +28,7 @@ def about_me_section() -> rx.Component:
             class_name="text-5xl font-bold mb-6 text-gray-100 font-mono",
         ),
         rx.el.p(
-            "Welcome to my site! I'm interested in database systems, probability, and philosophy. ",
+            "I'm interested in database systems, probability, and philosophy. ",
             class_name="text-lg text-gray-300 mb-4 font-mono",
         ),
         rx.el.p(
