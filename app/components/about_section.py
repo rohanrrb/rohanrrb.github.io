@@ -61,7 +61,7 @@ def about_me_section() -> rx.Component:
                 "LinkedIn: ",
                 rx.el.a(
                     "https://linkedin.com/in/rohan-bopardikar",
-                    href="https://linkedin.com/in/rohan-bopardikar",
+                    href="https://linkedin.com/in/rbopardi",
                     target="_blank",
                     rel="noopener noreferrer",
                     class_name=url_style,
