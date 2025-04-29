@@ -14,7 +14,7 @@ def post_not_found() -> rx.Component:
         ),
         rx.el.p(
             "Post not found or failed to load.",
-            class_name="text-red-500",
+            class_name="text-red-500 font-mono",
         ),
         class_name="p-6",
     )
@@ -22,10 +22,11 @@ def post_not_found() -> rx.Component:
 
 def about_me_section() -> rx.Component:
     """The About Me section component, now including posts."""
+    link_style = "text-lg text-indigo-400 hover:text-indigo-300 mb-2 font-mono block"
     return rx.el.div(
         rx.el.h1(
             "Rohan Bopardikar",
-            class_name="text-5xl font-bold mb-6 text-gray-100 font-mono",
+            class_name="text-5xl font-bold mb-6 text-gray-100",
         ),
         rx.el.p(
             "I'm interested in database systems, probability, and philosophy. ",
@@ -45,20 +46,20 @@ def about_me_section() -> rx.Component:
                 class_name="text-lg text-gray-300 mb-2 font-mono",
             ),
             rx.el.a(
-                "github.com/rohanrrb",
+                "GitHub",
                 href="https://github.com/rohanrrb",
                 target="_blank",
                 rel="noopener noreferrer",
-                class_name="text-lg text-indigo-400 hover:text-indigo-300 mb-2 font-mono block",
+                class_name=link_style,
             ),
             rx.el.a(
-                "LinkedIn Profile",
-                href="https://linkedin.com/in/your-profile",
+                "LinkedIn",
+                href="https://linkedin.com/in/rohan-bopardikar",
                 target="_blank",
                 rel="noopener noreferrer",
-                class_name="text-lg text-indigo-400 hover:text-indigo-300 mb-8 font-mono block",
+                class_name=link_style,
             ),
-            class_name="w-full",
+            class_name="w-full mb-8",
         ),
         rx.el.hr(class_name="my-12 border-gray-700"),
         rx.cond(
@@ -71,5 +72,5 @@ def about_me_section() -> rx.Component:
                 blog_post_list(),
             ),
         ),
-        class_name="w-full max-w-4xl mx-auto py-12 px-4",
+        class_name="w-full max-w-6xl mx-auto py-12 px-4",
     )

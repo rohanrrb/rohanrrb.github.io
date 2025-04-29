@@ -13,7 +13,7 @@ def post_detail(post: Post) -> rx.Component:
         ),
         rx.el.h1(
             post["title"],
-            class_name="text-4xl font-bold mb-2 text-gray-100 font-mono",
+            class_name="text-4xl font-bold mb-2 text-gray-100",
         ),
         rx.moment(
             date=post["date"],
@@ -24,5 +24,5 @@ def post_detail(post: Post) -> rx.Component:
             rx.markdown(post["content"]),
             class_name="prose prose-lg prose-invert max-w-none text-gray-300 leading-relaxed font-mono",
         ),
-        class_name="p-6 bg-neutral-800 w-full border border-gray-700",
+        class_name="p-6 bg-neutral-800 w-full",
     )
