@@ -10,11 +10,11 @@ def post_not_found() -> rx.Component:
         rx.el.button(
             "< Back to Posts",
             on_click=BlogState.clear_selection,
-            class_name="mb-6 text-indigo-400 hover:text-indigo-300 transition-colors duration-200 font-medium text-sm font-mono",
+            class_name="mb-6 text-indigo-400 hover:text-indigo-300 transition-colors duration-200 font-medium text-sm font-sans",
         ),
         rx.el.p(
             "Post not found or failed to load.",
-            class_name="text-red-500 font-mono",
+            class_name="text-red-500 font-sans",
         ),
         class_name="p-6",
     )
@@ -22,29 +22,29 @@ def post_not_found() -> rx.Component:
 
 def about_me_section() -> rx.Component:
     """The About Me section component, now including posts."""
-    link_style = "text-lg text-gray-300 mb-2 font-mono"
+    link_style = "text-lg text-gray-300 mb-2 font-sans"
     url_style = "text-indigo-400 hover:text-indigo-300"
     return rx.el.div(
         rx.el.h1(
             "Rohan Bopardikar",
-            class_name="text-5xl font-bold mb-6 text-gray-100",
+            class_name="text-5xl font-bold mb-6 text-gray-100 font-sans",
         ),
         rx.el.p(
             "I'm interested in database systems, probability, and philosophy. ",
-            class_name="text-lg text-gray-300 mb-4 font-mono",
+            class_name="text-lg text-gray-300 mb-4 font-sans",
         ),
         rx.el.p(
             "Currently I am studying CS + Math @ASU and completing my honors thesis under Dr. Jia Zou.",
-            class_name="text-lg text-gray-300 mb-8 font-mono",
+            class_name="text-lg text-gray-300 mb-8 font-sans",
         ),
         rx.el.div(
             rx.el.p(
                 "Get in touch:",
-                class_name="text-lg text-gray-300 mb-2 font-mono font-semibold",
+                class_name="text-lg text-gray-300 mb-2 font-sans font-semibold",
             ),
             rx.el.p(
                 "Email: rohanbopi [at] gmail [dot] com",
-                class_name="text-lg text-gray-300 mb-2 font-mono",
+                class_name="text-lg text-gray-300 mb-2 font-sans",
             ),
             rx.el.p(
                 "GitHub: ",
