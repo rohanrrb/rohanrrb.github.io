@@ -22,7 +22,8 @@ def post_not_found() -> rx.Component:
 
 def about_me_section() -> rx.Component:
     """The About Me section component, now including posts."""
-    link_style = "text-lg text-indigo-400 hover:text-indigo-300 mb-2 font-mono block"
+    link_style = "text-lg text-gray-300 mb-2 font-mono"
+    url_style = "text-indigo-400 hover:text-indigo-300"
     return rx.el.div(
         rx.el.h1(
             "Rohan Bopardikar",
@@ -45,18 +46,26 @@ def about_me_section() -> rx.Component:
                 "Email: rohanbopi [at] gmail [dot] com",
                 class_name="text-lg text-gray-300 mb-2 font-mono",
             ),
-            rx.el.a(
-                "GitHub",
-                href="https://github.com/rohanrrb",
-                target="_blank",
-                rel="noopener noreferrer",
+            rx.el.p(
+                "GitHub: ",
+                rx.el.a(
+                    "https://github.com/rohanrrb",
+                    href="https://github.com/rohanrrb",
+                    target="_blank",
+                    rel="noopener noreferrer",
+                    class_name=url_style,
+                ),
                 class_name=link_style,
             ),
-            rx.el.a(
-                "LinkedIn",
-                href="https://linkedin.com/in/rohan-bopardikar",
-                target="_blank",
-                rel="noopener noreferrer",
+            rx.el.p(
+                "LinkedIn: ",
+                rx.el.a(
+                    "https://linkedin.com/in/rohan-bopardikar",
+                    href="https://linkedin.com/in/rohan-bopardikar",
+                    target="_blank",
+                    rel="noopener noreferrer",
+                    class_name=url_style,
+                ),
                 class_name=link_style,
             ),
             class_name="w-full mb-8",

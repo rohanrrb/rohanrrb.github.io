@@ -19,10 +19,13 @@ POSTS_DIR = "app/posts"
 def get_post_date_obj(post: Post) -> datetime:
     """Helper function to get a datetime object for sorting posts."""
     try:
-        return datetime.strptime(post["date"], "%Y-%m-%d")
+        date_str = post.get("date")
+        if not date_str:
+            raise ValueError("Date string is empty or None")
+        return datetime.strptime(date_str, "%Y-%m-%d")
     except (ValueError, KeyError, TypeError):
         print(
-            f"Warning: Could not parse date '{post.get('date')}' for sorting post '{post.get('slug', 'Unknown')}'."
+            f"Warning: Could not parse date '{post.get('date', 'N/A')}' for sorting post '{post.get('slug', 'Unknown Slug')}'. Using minimum date for sorting."
         )
         return datetime.min
 
@@ -32,7 +35,7 @@ def load_posts_from_markdown() -> List[Post]:
     Loads blog posts from markdown files in the POSTS_DIR.
     Expects metadata lines at the top like:
     title: My Post Title
-    date: YYYY-MM-DD  <- IMPORTANT: Use this exact format!
+    date: YYYY-MM-DD
     snippet: A short description...
     (followed by a blank line, then the content)
     """
@@ -84,29 +87,20 @@ def load_posts_from_markdown() -> List[Post]:
                 content_start_index = 0
                 metadata_keys = {"title", "date", "snippet"}
                 for i, line in enumerate(lines):
-                    if i >= 10:
-                        break
                     stripped_line = line.strip()
                     if not stripped_line:
                         content_start_index = i + 1
                         break
                     if ":" in stripped_line:
-                        try:
-                            key, value = (
-                                stripped_line.split(":", 1)
-                            )
-                            key = key.strip().lower()
+                        parts = stripped_line.split(":", 1)
+                        if len(parts) == 2:
+                            key = parts[0].strip().lower()
+                            value = parts[1].strip()
                             if key in metadata_keys:
-                                metadata[key] = (
-                                    value.strip()
-                                )
-                                content_start_index = i + 1
-                        except ValueError:
-                            content_start_index = i
-                            break
-                    else:
-                        content_start_index = i
-                        break
+                                metadata[key] = value
+                                continue
+                    content_start_index = i
+                    break
                 else:
                     content_start_index = len(lines)
                 actual_content_start = content_start_index
@@ -122,6 +116,10 @@ def load_posts_from_markdown() -> List[Post]:
                 title = metadata.get(
                     "title", slug.replace("-", " ").title()
                 )
+                if "title" not in metadata:
+                    print(
+                        f"Warning: Missing 'title' metadata in '{filename}'. Using generated title '{title}'."
+                    )
                 raw_date = metadata.get("date", "")
                 date_str = "1970-01-01"
                 if raw_date:
@@ -147,22 +145,23 @@ def load_posts_from_markdown() -> List[Post]:
                             "<[^>]+>", "", content
                         )
                         plain_text_content = re.sub(
-                            "\\[([^\\]]+)\\]\\([^\\)]+\\)",
+                            "\\!\\[.*?\\]\\(.*?\\)",
+                            "",
+                            plain_text_content,
+                        )
+                        plain_text_content = re.sub(
+                            "\\[(.*?)\\]\\(.*?\\)",
                             "\\1",
                             plain_text_content,
                         )
                         plain_text_content = re.sub(
-                            "[`*_~#]",
+                            "[`*_~#->]",
                             "",
                             plain_text_content,
                         )
-                        plain_text_content = (
-                            plain_text_content.replace(
-                                "\r\n", " "
-                            )
-                            .replace("\n", " ")
-                            .strip()
-                        )
+                        plain_text_content = re.sub(
+                            "\\s+", " ", plain_text_content
+                        ).strip()
                         snippet = plain_text_content[
                             :150
                         ] + (
@@ -172,6 +171,9 @@ def load_posts_from_markdown() -> List[Post]:
                         )
                     else:
                         snippet = "No snippet available."
+                    print(
+                        f"Warning: Missing 'snippet' metadata in '{filename}'. Auto-generated snippet."
+                    )
                 posts.append(
                     Post(
                         slug=slug,
@@ -193,11 +195,11 @@ def load_posts_from_markdown() -> List[Post]:
         posts.sort(key=get_post_date_obj, reverse=True)
     except Exception as e:
         print(
-            f"Warning: Could not sort posts by date. Error: {e}"
+            f"Error: Could not sort posts by date. Error: {e}"
         )
     if not posts and os.path.exists(POSTS_DIR):
         print(
-            f"No valid markdown files (.md with 'title', 'date: YYYY-MM-DD', 'snippet' metadata) found or processed successfully in '{POSTS_DIR}'."
+            f"No valid markdown files (.md with required metadata) found or processed successfully in '{POSTS_DIR}'."
         )
     elif posts:
         print(f"Successfully loaded {len(posts)} posts.")
@@ -228,12 +230,12 @@ class BlogState(rx.State):
     def select_post(self, slug: str):
         """Selects a post by its slug."""
         print(f"Selecting post with slug: {slug}")
-        found: bool = False
+        post_exists = False
         for post in self.posts:
             if post["slug"] == slug:
-                found = True
+                post_exists = True
                 break
-        if found:
+        if post_exists:
             self.selected_post_slug = slug
         else:
             print(
@@ -250,7 +252,7 @@ class BlogState(rx.State):
         """Reloads posts from the markdown directory."""
         print("Reloading posts...")
         self.posts = load_posts_from_markdown()
-        current_slug_exists: bool = False
+        current_slug_exists = False
         if self.selected_post_slug:
             for post in self.posts:
                 if post["slug"] == self.selected_post_slug:
