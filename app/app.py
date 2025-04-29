@@ -6,7 +6,7 @@ def index() -> rx.Component:
     """The main page displaying about section and posts."""
     return rx.el.div(
         about_me_section(),
-        class_name="min-h-screen bg-neutral-800 p-4 sm:p-8 md:p-12 flex flex-col items-center font-mono text-gray-200",
+        class_name="min-h-screen bg-neutral-800 p-4 sm:p-8 md:p-12 flex flex-col items-center font-sans text-gray-200",
     )
 
 

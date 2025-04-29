@@ -26,7 +26,7 @@ def blog_post_list_item(post: Post) -> rx.Component:
             ),
             class_name="text-indigo-400 hover:text-indigo-300 transition-colors duration-200 font-medium text-sm",
         ),
-        class_name="py-4 border-b border-gray-700 last:border-b-0 font-mono w-full",
+        class_name="py-4 border-b border-gray-700 last:border-b-0 font-sans w-full",
     )
 
 
@@ -35,7 +35,7 @@ def blog_post_list() -> rx.Component:
     return rx.el.div(
         rx.el.h2(
             "Research Projects/Notes",
-            class_name="text-3xl font-bold mb-6 text-gray-100 font-mono",
+            class_name="text-3xl font-bold mb-6 text-gray-100 font-sans",
         ),
         rx.el.div(
             rx.cond(
