@@ -128,10 +128,11 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+  font-size: 1rem;
+  border-left: 2px solid #939393;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  color: #939393;
 }
 hr {
 	border: none;
