@@ -3,6 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Logo from '../assets/rohan_logo.svg';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Navbar from '../components/Navbar.astro';
+
 ---
 
 <!doctype html>
@@ -34,7 +36,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
     }
     </style>
   </head>
+  
   <body>
+    <Navbar />
     <div class="logo">
       <Logo />
     </div>

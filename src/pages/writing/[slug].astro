@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import Navbar from '../../components/Navbar.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import Logo from '../../assets/rohan_logo.svg';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${post.data.title} | ${SITE_TITLE}`} description="" />
+    <style>
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: .05em;
+      }
+
+      .logo {
+        display: block;
+        margin: 2rem auto 0;
+        width: 300px;
+        height: auto;
+      }
+
+      .date {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <Navbar />
+    <div class="logo">
+      <Logo />
+    </div>
+    <main>
+      <h1>{post.data.title}</h1>
+      <div class="date">{post.data.date.toLocaleDateString('default', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</div>
+      <Content />
+    </main>
+    <Footer />
+  </body>
+</html>

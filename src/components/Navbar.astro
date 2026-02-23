@@ -1,0 +1,28 @@
+---
+const currentPath = Astro.url.pathname;
+---
+<nav>
+  <a href="/" class={currentPath === '/' ? 'active' : ''}>home</a>
+  <a href="/writing" class={currentPath.startsWith('/writing') ? 'active' : ''}>writing</a>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+  }
+
+    nav a {
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        color: var(--accent);
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: var(--dark-accent);
+    }
+</style>

@@ -22,6 +22,10 @@
 		0 16px 32px rgba(0, 0, 0, 0.5);
 }
 
+html {
+  overflow-y: scroll;
+}
+
 @font-face {
     font-family: 'RoyalFlush';
     src: url('/fonts/RoyalFlush_Basic-Regular.ttf') format('truetype');

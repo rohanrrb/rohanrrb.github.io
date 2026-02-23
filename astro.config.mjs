@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://rohanrrb.github.io',
 	integrations: [mdx(), sitemap()],
 	server: {
         allowedHosts: ['unhomiletic-idolizingly-edmond.ngrok-free.dev']
