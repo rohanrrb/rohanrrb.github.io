@@ -97,6 +97,17 @@ p {
     max-width: 510px;
     margin: 0 auto;
 }
+.full-width p{
+  max-width: 100% !important;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.full-width table {
+  max-width: 100% !important;
+}
+
+
 .prose p {
 	margin-bottom: 2em;
 }
@@ -107,14 +118,35 @@ textarea {
 input {
 	font-size: 16px;
 }
+
 table {
-	width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 2rem 0 2rem 0rem;
+
+}
+
+th, td {
+  border: 1px solid rgb(var(--gray-light));
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  
+}
+
+th {
+  background-color: rgba(255,255,255,0.05);
 }
 img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
+  max-width: 50%;
+  height: auto;
+  border-radius: 2px;
+  float: right;
+  margin: 0.5rem 0 0rem 0.5rem;
 }
+
+
 code {
 	padding: 2px 5px;
 	background-color: #1C1917;
