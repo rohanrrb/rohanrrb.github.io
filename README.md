@@ -1,7 +1,7 @@
 This is my personal site using Astro. 
 
 
-Sites I used for inspiration (thanks): 
+Thank you to: 
 
 - https://www.fromjason.xyz/
 - https://mnmlist.com/
