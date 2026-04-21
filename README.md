@@ -1,8 +1,7 @@
-This is my personal site using Astro. 
+This is my personal/research/misc. site built using Astro. 
 
 
-Thank you to: 
-
+Inspired by:  
 - https://www.fromjason.xyz/
 - https://mnmlist.com/
 - https://mattrothenberg.com/
