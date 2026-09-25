@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rohan Bopardikar</title>
+<meta name="description" content="Rohan Bopardikar">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&family=Sahitya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #161b18;
+    --text: #cdd3cc;
+    --muted: #8a938b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Sahitya, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  main {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 12vh 1.5rem 4rem clamp(1.5rem, 8vw, 7rem);
+  }
+  header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: center;
+    column-gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 76px; height: auto; }
+  h1 { grid-column: 2; grid-row: 1; }
+  .affiliation { grid-column: 2; grid-row: 2; }
+  h1 { margin: 0; font-size: 2.8rem; font-weight: 400; line-height: 1.1; white-space: nowrap; }
+  .affiliation { display: flex; justify-content: space-between; gap: 1rem; margin: .25rem 0 0; color: var(--muted); font-size: .92em; }
+  p { margin: 0 0 1.25rem; width: 0; min-width: 100%; }
+  p, .affiliation { font-family: Karla, sans-serif; }
+  a {
+    color: #e2e7e0;
+    text-decoration: underline;
+    text-decoration-color: #5d6a61;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  a:hover { color: #fff; text-decoration-color: var(--text); }
+  .connect { margin-top: 1.5rem; font-family: Karla, sans-serif; }
+  .connect a { color: var(--muted); text-decoration-color: #3f4a43; }
+  .connect a:hover { color: var(--text); text-decoration-color: var(--text); }
+  p { text-align: justify; text-align-last: justify; text-wrap: balance; }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    main { padding: 8vh 1.5rem 3rem; }
+    h1 { font-size: 2.1rem; }
+    img { width: 56px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="jasmine.svg" alt="">
+    <h1>Rohan Bopardikar</h1>
+    <div class="affiliation"><span>Columbia University</span><span>Arizona State University</span></div>
+  </header>
+  <p>
+    I grew up in Portland, Oregon, and studied math and computer science at ASU. I worked on agents for
+    data preparation tasks, advised by Dr.&nbsp;Jia&nbsp;Zou. I'm now studying machine learning at Columbia and am particularly interested
+    in online learning. In my free time I like to <a href="https://www.goodreads.com/user/show/185146574-lambdaplant" target="_blank" rel="noopener">read</a>, write, and listen to <a href="https://open.spotify.com/playlist/6U4HwKCWAZK6ujFJVn8BZj" target="_blank" rel="noopener">music</a>.
+  </p>
+  <div class="connect"><a href="connect.html">Want to reach out?</a></div>
+</main>
+</body>
+</html>
