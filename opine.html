@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opine · Rohan Bopardikar</title>
+<meta name="description" content="Rohan Bopardikar">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&family=Sahitya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #101211;
+    --text: #cdd3cc;
+    --muted: #8a938b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Sahitya, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  main {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 12vh 1.5rem 4rem clamp(1.5rem, 8vw, 7rem);
+  }
+  header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: center;
+    column-gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 76px; height: auto; }
+  h1 { grid-column: 2; grid-row: 1; }
+  .affiliation { grid-column: 2; grid-row: 2; }
+  h1 { margin: 0; font-size: 2.8rem; font-weight: 400; line-height: 1.1; white-space: nowrap; }
+  .affiliation { display: flex; justify-content: space-between; gap: 1rem; margin: .25rem 0 0; color: var(--muted); font-size: .92em; }
+  p { margin: 0 0 1.25rem; width: 0; min-width: 100%; }
+  p, .affiliation { font-family: Karla, sans-serif; }
+  a {
+    color: #e2e7e0;
+    text-decoration: underline;
+    text-decoration-color: #5d6a61;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  a:hover { color: #fff; text-decoration-color: var(--text); }
+  .connect { margin-top: 1.5rem; font-family: Karla, sans-serif; }
+  .connect a { color: var(--muted); text-decoration-color: #3f4a43; }
+  .connect a:hover { color: var(--text); text-decoration-color: var(--text); }
+  p { text-align: justify; text-align-last: justify; text-wrap: balance; }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    main { padding: 8vh 1.5rem 3rem; }
+    h1 { font-size: 2.1rem; }
+    img { width: 56px; }
+  }
+  .back { margin-bottom: 2rem; font-family: Karla, sans-serif; }
+  .back a { color: var(--muted); text-decoration-color: #3f4a43; }
+  .back a:hover { color: var(--text); text-decoration-color: var(--text); }
+  main { width: fit-content; max-width: 100%; }
+  p { width: 430px; max-width: 100%; text-align: left; text-align-last: auto; text-wrap: pretty; }
+  h2 { margin: 0 0 1.25rem; font-size: 2.2rem; font-weight: 400; line-height: 1.2; }
+  .links { font-family: Karla, sans-serif; display: grid; grid-template-columns: 5rem auto; justify-content: start; column-gap: 1rem; row-gap: .25rem; }
+  .links .k { color: var(--muted); }
+  .links { align-items: center; }
+  .links > * { line-height: 1.7; }
+</style>
+</head>
+<body>
+<main>
+  <div class="back"><a href="index.html">← back</a></div>
+  <h2>Opine</h2>
+  <p>
+    Opine is a passion project I created and maintain (with Claude): a paper where anybody can write about anything.
+    Pick a pen name and publish. There is no account to make and no email to give.
+  </p>
+  <p>
+    It is built on broadsheet, the software I wrote to run it, which sets writing out like the front page of a newspaper.
+    If you are looking to start a blog by yourself, with your friends, or for anybody, broadsheet might be a good choice!
+    It is not public yet, so <a href="connect.html">reach out</a> if you would like to try it.
+  </p>
+  <div class="links" style="margin-top:1.5rem">
+    <span class="k">read</span><a href="https://readopine.com" target="_blank" rel="noopener">readopine.com</a>
+    <span class="k">write</span><a href="https://readopine.com/write" target="_blank" rel="noopener">readopine.com/write</a>
+  </div>
+</main>
+</body>
+</html>
