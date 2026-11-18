@@ -36,14 +36,26 @@
     align-items: center;
     column-gap: 1.25rem;
     margin-bottom: 2rem;
+    --name: 2.8rem;
+    --quote: .92em;
   }
-  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 76px; height: auto; transform: translateY(2px); }
+  /* The flower is centered on the header's visible text: with the text boxes trimmed
+     (below), the grid's height runs from the name's cap line to the quote's last baseline. */
+  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 76px; height: auto; }
   h1 { grid-column: 2; grid-row: 1; }
   .affiliation { grid-column: 2; grid-row: 2; }
-  h1 { margin: 0 0 0 -.05em; font-size: 2.8rem; font-weight: 400; line-height: 1.1; white-space: nowrap; }
-  .affiliation { width: 0; min-width: 100%; margin: .25rem 0 0; color: var(--muted); font-size: .92em; line-height: 1.5; text-align: justify; }
+  h1 { margin: 0 0 0 -.05em; font-size: var(--name); font-weight: 400; line-height: 1.1; white-space: nowrap; }
+  .affiliation { width: 0; min-width: 100%; margin: .25rem 0 0; color: var(--muted); font-size: var(--quote); line-height: 1.5; text-align: justify; }
   p { margin: 0 0 1.25rem; width: 0; min-width: 100%; }
-  .cite { float: right; margin-left: 1.5rem; }
+  .cite { float: right; margin: 0 0 -1em 1.5rem; }
+  /* Trim the text boxes to the visible ink: cap line on top, baseline at the bottom.
+     The padding/margins add back exactly what's trimmed, so nothing else moves:
+     .2424 name ems above the caps, .22 below the name's baseline, .4175 quote ems below the quote. */
+  @supports (text-box: trim-both cap alphabetic) {
+    header { padding-top: calc(.2424 * var(--name)); margin-bottom: calc(2rem + .4175 * var(--quote)); }
+    h1 { text-box: trim-both cap alphabetic; margin-bottom: .22em; }
+    .affiliation { text-box: trim-end text alphabetic; }
+  }
   p, .affiliation { font-family: Karla, sans-serif; }
   a {
     color: #e2e7e0;
@@ -61,8 +73,8 @@
   @media (max-width: 600px) {
     body { font-size: 16px; }
     main { padding: 8vh 1.5rem 3rem; }
-    h1 { font-size: 2.1rem; }
-    img { width: 56px; transform: translateY(1px); }
+    header { --name: 2.1rem; }
+    img { width: 56px; }
   }
 </style>
 </head>
