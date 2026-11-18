@@ -39,9 +39,12 @@
     --name: 2.8rem;
     --quote: .92em;
   }
-  /* The flower is centered on the header's visible text: with the text boxes trimmed
-     (below), the grid's height runs from the name's cap line to the quote's last baseline. */
-  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: 76px; height: auto; }
+  /* The flower runs exactly from the name's cap line to the quote's last baseline
+     (the header's height once the text boxes are trimmed, below):
+     .857 = cap height (.637) + gap below the name (.22), in name ems;
+     2.5825 = one quote line (1.5) + half-leading (.1655) + ascent (.917), in quote ems. */
+  img { grid-column: 1; grid-row: 1 / span 2; align-self: center; width: auto;
+        height: calc(.857 * var(--name) + .25rem + 2.5825 * var(--quote)); }
   h1 { grid-column: 2; grid-row: 1; }
   .affiliation { grid-column: 2; grid-row: 2; }
   h1 { margin: 0 0 0 -.05em; font-size: var(--name); font-weight: 400; line-height: 1.1; white-space: nowrap; }
@@ -73,8 +76,7 @@
   @media (max-width: 600px) {
     body { font-size: 16px; }
     main { padding: 8vh 1.5rem 3rem; }
-    header { --name: 2.1rem; }
-    img { width: 56px; }
+    header { --name: min(2.1rem, 7.8vw); } /* 7.8vw keeps name + flower inside a 320px phone */
   }
 </style>
 </head>
